@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0dy5vmdapl5d"]
+
+[ext_resource type="Script" uid="uid://c8inat4tls4sn" path="res://Scripts/Platform.gd" id="1_g4nqx"]
+[ext_resource type="Material" uid="uid://nxvttxu5w66j" path="res://Assets/Materials/green.tres" id="2_8q6su"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kncqv"]
+material = ExtResource("2_8q6su")
+size = Vector3(1, 0.2, 5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7l3jd"]
+points = PackedVector3Array(0.5, 0.1, 2.5, 0.5, -0.1, 2.5, 0.5, 0.1, -2.5, -0.5, 0.1, 2.5, -0.5, -0.1, 2.5, 0.5, -0.1, -2.5, -0.5, 0.1, -2.5, -0.5, -0.1, -2.5)
+
+[node name="PlatformLong" type="StaticBody3D"]
+script = ExtResource("1_g4nqx")
+metadata/_custom_type_script = "uid://c8inat4tls4sn"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_kncqv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_7l3jd")
