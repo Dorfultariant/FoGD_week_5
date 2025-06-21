@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://de1j7rjvv024o"]
+[gd_scene load_steps=17 format=3 uid="uid://de1j7rjvv024o"]
 
 [ext_resource type="Script" uid="uid://bcts7agxrne5d" path="res://Scripts/platform_spawner.gd" id="1_kry3j"]
 [ext_resource type="Script" uid="uid://c8inat4tls4sn" path="res://Scripts/Platform.gd" id="2_kry3j"]
 [ext_resource type="Material" uid="uid://5n3u3r785sj1" path="res://Assets/Materials/red.tres" id="3_21xkr"]
 [ext_resource type="Material" uid="uid://ct4kxal823ctc" path="res://Assets/Materials/magenta.tres" id="4_6bp64"]
 [ext_resource type="Material" uid="uid://ba7nw3o3thqtm" path="res://Assets/Materials/blue.tres" id="5_344ge"]
+[ext_resource type="PackedScene" uid="uid://bdadrb8sallou" path="res://Scenes/player.tscn" id="6_21xkr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7i20d"]
 size = Vector3(1, 0.2, 2)
@@ -86,3 +87,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Player" parent="." instance=ExtResource("6_21xkr")]
