@@ -1,6 +1,5 @@
 extends Node
 
-
 var score_counter : int = 0
 var score_file = "user://highscore.txt"
 
