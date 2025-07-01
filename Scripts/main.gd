@@ -16,7 +16,7 @@ func _ready() -> void:
 		update_score()
 		var hs = load_highscore()
 		LBL_HIGHSCORE.text = "Highscore: {0}".format([hs])
-		
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 		
@@ -24,7 +24,7 @@ func _process(_delta: float) -> void:
 			if $Player.global_position.y > -20:
 					#score_counter += Time.get_ticks_msec()
 					#score_counter /= 1000
-					score_counter = int((Time.get_unix_time_from_system() - start_time))
+					score_counter = (Time.get_unix_time_from_system() - start_time)
 					update_score()
 			else:
 				$Player.queue_free()
@@ -47,4 +47,4 @@ func write_highscore(score) -> void:
 func check_highscore() -> void:
 		var hs = load_highscore()
 		if hs < score_counter:
-				write_highscore(score_counter)
+				write_highscore(ceil(score_counter))
