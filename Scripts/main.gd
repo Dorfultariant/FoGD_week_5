@@ -18,11 +18,13 @@ func _ready() -> void:
 		LBL_HIGHSCORE.text = "Highscore: {0}".format([hs])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-		if $Player.global_position.y > -20:
-				score_counter = int((Time.get_unix_time_from_system() - start_time))
-				update_score()
-		else:
+func _process(_delta: float) -> void:
+		if get_node_or_null("Player"):
+			if $Player.global_position.y > -20:
+					score_counter = int((Time.get_unix_time_from_system() - start_time))
+					update_score()
+			else:
+				$Player.queue_free()
 				check_highscore()
 
 func load_highscore() -> int:
