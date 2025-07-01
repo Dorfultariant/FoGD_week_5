@@ -47,4 +47,4 @@ func write_highscore(score) -> void:
 func check_highscore() -> void:
 		var hs = load_highscore()
 		if hs < score_counter:
-				write_highscore(ceil(score_counter))
+				write_highscore(round(score_counter))
