@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://de1j7rjvv024o"]
+
+[ext_resource type="Script" uid="uid://daw3rdlgwxtcf" path="res://Scripts/main.gd" id="1_21xkr"]
+[ext_resource type="Script" uid="uid://bcts7agxrne5d" path="res://Scripts/platform_spawner.gd" id="1_kry3j"]
+[ext_resource type="PackedScene" uid="uid://b18so16sfqyub" path="res://Scenes/platform_short.tscn" id="2_kry3j"]
+[ext_resource type="PackedScene" uid="uid://d8wog7o1dpbj" path="res://Scenes/platform_medium.tscn" id="3_21xkr"]
+[ext_resource type="PackedScene" uid="uid://bvmiq5ppmq6du" path="res://Scenes/platform_long.tscn" id="4_6bp64"]
+[ext_resource type="PackedScene" uid="uid://b3gkatulsmseg" path="res://Scenes/player.tscn" id="6_21xkr"]
+
+[sub_resource type="Environment" id="Environment_kry3j"]
+background_mode = 1
+background_color = Color(0.149905, 1.71225e-05, 0.151225, 1)
+ambient_light_color = Color(0.517184, 0.517184, 0.517184, 1)
+
+[node name="main" type="Node"]
+script = ExtResource("1_21xkr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="PlatformSpawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 65.8212)
+script = ExtResource("1_kry3j")
+platforms = Array[PackedScene]([ExtResource("2_kry3j"), ExtResource("3_21xkr"), ExtResource("4_6bp64")])
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, -8.27662e-08, -1.89685e-09, 8.0437e-08, 0.965926, 0.258819, -1.95893e-08, -0.258819, 0.965926, 0, 3, 4)
+environment = SubResource("Environment_kry3j")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Label" parent="UI"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="HighScore" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+
+[node name="Player" parent="." instance=ExtResource("6_21xkr")]
